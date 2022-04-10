@@ -128,7 +128,7 @@ class Report
 		try {
 			$this->content = json_decode(json_encode(DB::connection($this->database)->select($this->query)), true);
 		} catch (\Illuminate\Database\QueryException $exception) {
-			$this->content = (config('app.debug') == true) ? $exception->getMessage() : 'd'; #'<div class="alert alert-danger">' . $exception->getMessage() . '</div>' : '';
+			$this->content = (config('app.debug') == true) ? $exception->getMessage() : '<div class="alert alert-danger">' . $exception->getMessage() . '</div>' : '';
 		}
 		return $this;
 	}
