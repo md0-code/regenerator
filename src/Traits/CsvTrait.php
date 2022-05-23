@@ -14,13 +14,13 @@ trait CsvTrait
 				if ($this->csvQuotes) array_walk($header, function (&$x) {
 					$x = "\"$x\"";
 				});
-				$csvFile = implode($header, $this->csvDelimiter) . "\n";
+				$csvFile = implode($this->csvDelimiter, $header) . "\n";
 				foreach ($this->content as $line) {
 					$line = array_values($line);
 					if ($this->csvQuotes) array_walk($line, function (&$x) {
 						$x = "\"$x\"";
 					});
-					$csvLine = implode($line, $this->csvDelimiter);
+					$csvLine = implode($this->csvDelimiter, $line);
 					$csvFile .= $csvLine . "\n";
 				}
 				return $csvFile;
